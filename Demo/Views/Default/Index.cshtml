@@ -1,0 +1,38 @@
+﻿
+@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>Index</title>
+    <script src="~/Scripts/jquery-3.3.1.js"></script>
+    <script src="~/TS/file1.js"></script>
+    <script type="text/javascript">
+        $(document).ready(function () {
+            var image = new Image();
+            $("#upload").change(function (evt) {
+                var file = evt.target;
+                var reader = new FileReader();
+                reader.onload = function (p) {
+                    image.src = p.target.result;
+                    $("#mainDiv").empty().append(image);
+                };
+                reader.readAsDataURL(file.files[0]);
+            });
+        });
+    </script>
+</head>
+<body>
+    <div> 
+        <input type="file" id="upload" />
+    </div>
+    <hr />
+    <div id="mainDiv">
+
+    </div>
+</body>
+</html>
